@@ -19,6 +19,9 @@ jobs:
             - name: Install dependencies
               run: yarn install
 
+            - name: Upgrade ESLint and strip-ansi
+              run: yarn upgrade eslint strip-ansi
+
             - name: Check lint and format
               run: yarn test-all
 
