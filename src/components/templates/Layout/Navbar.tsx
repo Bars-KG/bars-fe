@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className="shadow-bottom-only fixed z-50 hidden h-[82px] w-full items-center bg-white px-12 lg:flex lg:justify-between">
+      <nav className="shadow-bottom-only fixed z-50 hidden h-[82px] w-full items-center bg-white px-12 lg:flex lg:justify-between">
         <Link href="/" passHref className="flex items-center gap-3">
           <Image src="/logos/skywiki-logo.svg" alt="skywiki logo" className="cursor-pointer" width={40} height={40} />
           <span className="font-grandstander text-2xl font-semibold text-[#4DA6E6]">SkyWiki</span>
@@ -48,9 +48,9 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
         </div>
-      </div>
+      </nav>
 
-      <div className="shadow-bottom-only fixed z-50 flex w-full items-center bg-white px-6 py-5 lg:hidden">
+      <nav className="shadow-bottom-only fixed z-50 flex w-full items-center bg-white px-6 py-5 lg:hidden">
         <div className="flex h-9 w-full items-center justify-center">
           <Link href="/" passHref className="flex items-center gap-3">
             <Image src="/logos/skywiki-logo.svg" alt="skywiki logo" className="cursor-pointer" width={40} height={40} />
@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </nav>
     </>
   );
 };
