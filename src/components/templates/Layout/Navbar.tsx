@@ -11,6 +11,7 @@ import { SearchInput } from '@/components/SearchInput';
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
 
   const links = [
@@ -21,6 +22,8 @@ const Navbar: React.FC = () => {
   const toggleHamburger = () => {
     setOpen(!open);
   };
+
+  const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
 
   return (
     <>
@@ -46,15 +49,46 @@ const Navbar: React.FC = () => {
       </nav>
 
       <nav className="shadow-bottom-only fixed z-50 flex w-full items-center bg-white px-6 py-5 lg:hidden">
-        <div className="flex h-9 w-full items-center justify-center">
-          <Link href="/" passHref className="flex items-center gap-3">
-            <Image src="/logos/skywiki-logo.svg" alt="skywiki logo" className="cursor-pointer" width={40} height={40} />
-            <span className="font-grandstander text-2xl font-semibold text-[#4DA6E6]">SkyWiki</span>
-          </Link>
-          <div className="flex w-full justify-end">
-            <button onClick={toggleHamburger} className={open ? styles.whnth : styles.wh}>
-              <div className={styles.icon}></div>
-            </button>
+        <div className="w-full justify-between">
+          <div className="flex h-9 w-full items-center gap-3">
+            <div className="flex justify-start">
+              <button onClick={toggleHamburger} className={open ? styles.whnth : styles.wh}>
+                <div className={styles.icon}></div>
+              </button>
+            </div>
+            <Link href="/" passHref className="flex items-center gap-3">
+              <Image
+                src="/logos/skywiki-logo.svg"
+                alt="skywiki logo"
+                className="cursor-pointer"
+                width={40}
+                height={40}
+              />
+              <span className="font-grandstander text-2xl font-semibold text-[#4DA6E6]">SkyWiki</span>
+            </Link>
+          </div>
+
+          <div className="absolute right-6 top-1/2 -translate-y-1/2 transform">
+            {isSearchOpen ? (
+              <SearchInput />
+            ) : (
+              <button onClick={toggleSearch} className="text-[#4DA6E6] transition-all duration-300 focus:outline-none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-8 w-8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 17a6 6 0 100-12 6 6 0 000 12zM21 21l-4.35-4.35"
+                  />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
         <div
@@ -65,8 +99,6 @@ const Navbar: React.FC = () => {
           }
         >
           <div className="flex flex-col gap-6 text-[#828282]">
-            <SearchInput />
-
             {links.map(({ href, name, icon: Icon }) => (
               <Link
                 key={href}
