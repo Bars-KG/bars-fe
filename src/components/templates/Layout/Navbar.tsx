@@ -7,6 +7,7 @@ import { MdLocalAirport } from 'react-icons/md';
 import Image from 'next/image';
 import styles from './hamburger.module.css';
 import { usePathname } from 'next/navigation';
+import { SearchInput } from '@/components/SearchInput';
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -29,13 +30,7 @@ const Navbar: React.FC = () => {
           <span className="font-grandstander text-2xl font-semibold text-[#4DA6E6]">SkyWiki</span>
         </Link>
 
-        <div className="mx-8">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="h-10 rounded-full border border-[#4DA6E6] px-4 placeholder-[#4DA6E6]"
-          />
-        </div>
+        <SearchInput />
 
         <div className="flex items-center gap-10">
           {links.map(({ href, name }) => (
@@ -70,11 +65,7 @@ const Navbar: React.FC = () => {
           }
         >
           <div className="flex flex-col gap-6 text-[#828282]">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="h-10 rounded-full border border-[#4DA6E6] px-4 placeholder-[#4DA6E6]"
-            />
+            <SearchInput />
 
             {links.map(({ href, name, icon: Icon }) => (
               <Link
