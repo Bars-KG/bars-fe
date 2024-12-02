@@ -27,10 +27,12 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="shadow-bottom-only fixed z-50 hidden h-[82px] w-full items-center bg-white px-20 lg:flex lg:justify-between">
+      <nav className="fixed z-50 hidden h-[82px] w-full items-center bg-white px-20 shadow-bottom-only lg:flex lg:justify-between">
         <Link href="/" passHref className="flex items-center gap-3">
           <Image src="/logos/skywiki-logo.svg" alt="skywiki logo" className="cursor-pointer" width={40} height={40} />
-          <span className="font-grandstander text-2xl font-semibold text-[#4DA6E6]">SkyWiki</span>
+          <div>
+            <span className="flex items-center font-grandstander text-2xl font-semibold text-[#4DA6E6]">SkyWiki</span>
+          </div>
         </Link>
 
         <SearchInput />
@@ -48,7 +50,7 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      <nav className="shadow-bottom-only fixed z-50 flex w-full items-center bg-white px-6 py-5 lg:hidden">
+      <nav className="fixed z-50 flex w-full items-center bg-white px-6 py-5 shadow-bottom-only lg:hidden">
         <div className="w-full justify-between">
           <div className="flex h-9 w-full items-center gap-3">
             <div className="flex justify-start">
