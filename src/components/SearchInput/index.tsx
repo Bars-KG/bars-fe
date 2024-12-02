@@ -47,7 +47,7 @@ export const SearchInput = () => {
   }, [debouncedQuery]);
 
   return (
-    <div className="relative w-full lg:w-96">
+    <div className="relative w-full">
       <input
         type="text"
         placeholder="Search..."
@@ -78,7 +78,9 @@ export const SearchInput = () => {
           {suggestions.map((s, i) => (
             <div
               key={i}
-              className="flex cursor-pointer flex-col gap-1 rounded-lg px-4 py-2 text-black hover:bg-gray-100"
+              className={`flex cursor-pointer flex-col align-middle px-4 py-2 text-black hover:bg-gray-100 ${
+                i < suggestions.length - 1 ? 'border-b border-gray-200' : ''
+              }`}
               onClick={() => {
                 setSearchQuery(s.title);
                 setSuggestions([]);
