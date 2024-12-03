@@ -31,13 +31,12 @@ export const Search: React.FC<SearchProps> = ({ results: initialResults, keyword
   }, [keyword]);
 
   return (
-    <div className="flex w-full flex-col gap-10 bg-gradient-to-t from-[#D3EBFE] to-white lg:px-20 lg:py-32">
+    <div className="flex w-full flex-col gap-6 bg-gradient-to-t from-[#D3EBFE] to-white px-6 py-28 lg:gap-10 lg:px-20 lg:py-32">
       <span className="font-medium text-black">
         Search result for <b className="text-[#37AAE8]">{keyword}</b>
       </span>
 
       <div>
-        <h1>Search Results</h1>
         {results.length ? (
           results.map((res, index) => (
             <div key={index}>

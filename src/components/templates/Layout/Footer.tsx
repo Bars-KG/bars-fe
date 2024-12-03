@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="flex w-full items-center justify-between gap-4 bg-[#FFFFFF] px-7 py-8 lg:px-20 lg:py-12">
+    <footer className="flex flex-col sm:flex-row w-full items-center justify-between gap-4 bg-[#FFFFFF] px-7 py-8 lg:px-20 lg:py-12">
       <Link href="/" passHref className="flex items-center gap-3">
         <Image src="/logos/skywiki-logo.svg" alt="skywiki logo" className="cursor-pointer" width={40} height={40} />
         <div className="flex flex-col">
