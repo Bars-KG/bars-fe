@@ -8,7 +8,7 @@ type SearchResult = {
   description?: string;
   entity: string;
   title: string;
-  imgUrl?: string;
+  image_url?: string;
 };
 
 interface SearchProps {

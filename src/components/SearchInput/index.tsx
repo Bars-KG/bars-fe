@@ -1,6 +1,6 @@
 import api from '@/libs/axios/api';
 import { useRouter } from 'next/navigation';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import { useDebounce } from 'use-debounce';
@@ -9,21 +9,26 @@ export const SearchInput = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [debouncedQuery] = useDebounce(searchQuery, 300);
   const [suggestions, setSuggestions] = useState<Recommendation[]>([]);
-  const router = useRouter()
+  const [isSuggestionsVisible, setIsSuggestionsVisible] = useState(false);
+  const router = useRouter();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+    setIsSuggestionsVisible(true);
   };
 
   const clearInput = () => {
     setSearchQuery('');
     setSuggestions([]);
+    setIsSuggestionsVisible(false);
   };
 
   const handleSearch = (query: string) => {
     if (query) {
       router.push(`/search?keyword=${query}&page=1&limit=10`);
-      router.refresh()
+      router.refresh();
+      setIsSuggestionsVisible(false); // Close suggestions
     }
   };
 
@@ -47,6 +52,20 @@ export const SearchInput = () => {
     }
   };
 
+  // Close suggestions on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsSuggestionsVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   useEffect(() => {
     const fetch = async () => {
       const result = await fetchSuggestions(debouncedQuery);
@@ -56,7 +75,7 @@ export const SearchInput = () => {
   }, [debouncedQuery]);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" ref={containerRef}>
       <input
         type="text"
         placeholder="Search..."
@@ -83,17 +102,16 @@ export const SearchInput = () => {
         </button>
       )}
 
-      {suggestions.length > 0 && (
+      {isSuggestionsVisible && suggestions.length > 0 && (
         <div className="absolute left-0 top-12 z-10 w-full rounded-lg border border-[#4DA6E6] bg-white shadow-xl">
           {suggestions.map((s, i) => (
             <div
               key={i}
-              className={`flex cursor-pointer flex-col px-4 py-2 align-middle text-black hover:bg-gray-100 rounded-lg ${
+              className={`flex cursor-pointer flex-col rounded-lg px-4 py-2 align-middle text-black hover:bg-gray-100 ${
                 i < suggestions.length - 1 ? 'border-b border-gray-200' : ''
               }`}
               onClick={() => {
                 setSearchQuery(s.title);
-                setSuggestions([]);
                 handleSearch(s.title);
               }}
             >
