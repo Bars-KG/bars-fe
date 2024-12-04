@@ -1,3 +1,5 @@
+'use client';
+
 import api from '@/libs/axios/api';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';

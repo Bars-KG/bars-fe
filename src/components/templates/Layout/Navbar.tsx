@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
           <Link
             key={href}
             href={href}
-            className={`font-semibold ${pathname === href ? 'text-[#4DA6E6] underline' : 'text-black'}`}
+            className={`${pathname === href ? 'font-semibold text-[#4DA6E6]' : 'font-medium text-slate-500'} hover:scale-105`}
           >
             {name}
           </Link>
