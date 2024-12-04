@@ -25,8 +25,8 @@ export const DetailCard: React.FC<Field> = (props) => {
       )}
       {props.type === 'separator' && <div className="my-4 border-b border-[#519EFD]"></div>}
       {props.type === 'image' && (
-        <div className="relative w-full h-40 justify-center mb-6">
-          <Image src={props.value ?? ''} alt={'image'} fill className="object-contain rounded-lg" />
+        <div className="relative mb-6 h-40 w-full justify-center">
+          <Image src={props.value ?? ''} alt={'image'} fill className="rounded-lg object-contain" />
         </div>
       )}
     </>

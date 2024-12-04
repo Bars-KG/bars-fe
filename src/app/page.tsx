@@ -18,7 +18,7 @@ export default function Home() {
             Discover insider secrets, real-time updates, and everything you need to know about airports worldwide—all in
             one place!
           </p>
-          <div className="mt-6 w-full items-center justify-items-center px-4 sm:mt-8 sm:max-w-screen-md place-self-center">
+          <div className="mt-6 w-full items-center justify-items-center place-self-center px-4 sm:mt-8 sm:max-w-screen-md">
             <SearchInput />
           </div>
         </div>

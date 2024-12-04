@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="text-center sm:text-right">
-        <span className="flex gap-1 items-center font-medium text-[#A1A3A5]">
+        <span className="flex items-center gap-1 font-medium text-[#A1A3A5]">
           made with <FaHeart color="#4DA6E6" /> by BARS
         </span>
       </div>

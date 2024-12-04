@@ -29,7 +29,9 @@ export const Search: React.FC<SearchProps> = ({
       setResults(res.data);
       setCurrentPage(currentPage);
       setCountItems(res.count_items);
-    } catch (e: any) {}
+    } catch (e: any) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
