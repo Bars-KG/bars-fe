@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 interface PaginationProps {
   currentPage: number;
@@ -38,43 +39,45 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, countItems,
   };
 
   return (
-    <div className="mt-4 flex justify-center gap-2">
+    <div className="mt-4 flex items-center w-2/5 justify-center gap-4 place-self-center rounded-full">
       <button
         onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`rounded-md border px-4 py-2 ${
-          currentPage === 1 ? 'cursor-not-allowed text-gray-400' : 'text-blue-600'
+        className={`rounded-full border p-4 w-14 h-14 flex items-center ${
+          currentPage === 1 ? 'cursor-not-allowed text-gray-400 bg-white/10' : 'text-blue-600 bg-white/40 hover:bg-blue-300/60'
         }`}
       >
-        Prev
+        <IoIosArrowBack size={20}/>
       </button>
 
-      {renderPageNumbers().map((page, index) =>
-        typeof page === 'number' ? (
-          <button
-            key={index}
-            onClick={() => onPageChange(page)}
-            className={`rounded-md px-3 py-2 ${
-              page === currentPage ? 'bg-blue-600 text-white' : 'border text-gray-700 hover:bg-blue-100'
-            }`}
-          >
-            {page}
-          </button>
-        ) : (
-          <span key={index} className="px-3 py-2 text-gray-500">
-            {page}
-          </span>
-        ),
-      )}
+      <div className='bg-white/40 p-3 rounded-full w-full flex justify-center items-center gap-2'>
+        {renderPageNumbers().map((page, index) =>
+          typeof page === 'number' ? (
+            <button
+              key={index}
+              onClick={() => onPageChange(page)}
+              className={`rounded-full p-3 h-14 w-14 ${
+                page === currentPage ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-blue-100'
+              }`}
+            >
+              {page}
+            </button>
+          ) : (
+            <span key={index} className="px-3 py-2 text-gray-500">
+              {page}
+            </span>
+          ),
+        )}
+      </div>
 
       <button
         onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`rounded-md border px-4 py-2 ${
-          currentPage === totalPages ? 'cursor-not-allowed text-gray-400' : 'text-blue-600'
+        className={`rounded-full border p-4 w-14 h-14 flex items-center ${
+          currentPage === totalPages ? 'cursor-not-allowed text-gray-400 bg-white/10' : 'text-blue-600 bg-white/40 hover:bg-blue-300/60'
         }`}
       >
-        Next
+        <IoIosArrowForward size={20}/>
       </button>
     </div>
   );
