@@ -5,9 +5,9 @@ type Recommendation = {
 };
 
 type SearchResult = {
-  description?: string;
   entity: string;
   title: string;
+  description?: string;
   image_url?: string;
   city_label?: string;
   country_label?: string;
