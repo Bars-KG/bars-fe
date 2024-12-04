@@ -66,15 +66,6 @@ export const Search: React.FC<SearchProps> = ({
 
         <div className="mt-auto">
           {results.length > 0 && (
-            // <Pagination
-            //   currentPage={currentPage}
-            //   nextPage={nextPage}
-            //   previousPage={previousPage}
-            //   onPageChange={(page) => {
-            //     router.push(`/search?keyword=${keyword}&page=${page}&limit=10`);
-            //     router.refresh();
-            //   }}
-            // />
             <Pagination
               currentPage={currentPage}
               countItems={countItems}

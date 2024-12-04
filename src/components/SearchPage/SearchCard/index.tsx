@@ -10,13 +10,18 @@ export const SearchCard: React.FC<SearchResult> = (props) => {
         <Image src={props.image_url} width={120} height={60} alt={props.title} className="rounded-lg object-cover" />
       )}
 
-      <div className="flex w-full flex-col gap-1 text-black">
+      <div className="flex w-full flex-col text-black">
         <Link href={''} className="text-lg font-bold text-[#37AAE8] hover:text-[#002A48] hover:underline">
           {props.title}
         </Link>
-        <span className="font-medium">Aaaa, aaa</span>
+        {(props.city_label || props.country_label) && (
+          <span className="font-medium text-sm">
+            {props.city_label ? `${props.city_label}, ` : ''} {props.country_label ?? ''}
+          </span>
+        )}
+
         {props.description && (
-          <span className="w-full overflow-hidden text-ellipsis break-words text-sm md:max-w-[80%]">
+          <span className="w-full pt-4 overflow-hidden text-ellipsis break-words text-sm md:max-w-[80%]">
             {props.description}
           </span>
         )}
