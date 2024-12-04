@@ -1,3 +1,5 @@
+'use client';
+
 import api from '@/libs/axios/api';
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
