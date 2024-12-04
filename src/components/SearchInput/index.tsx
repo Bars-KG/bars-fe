@@ -110,8 +110,8 @@ export const SearchInput = () => {
                 i < suggestions.length - 1 ? 'border-b border-gray-200' : ''
               }`}
               onClick={() => {
-                setSearchQuery(s.title);
-                handleSearch(s.title);
+                router.push(`/airport/${s.entity.split('/').pop()}`);
+                setIsSuggestionsVisible(false);
               }}
             >
               <span className="font-bold">{s.title}</span>

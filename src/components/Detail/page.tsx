@@ -17,13 +17,9 @@ export const Detail: React.FC<DetailProps> = ({ title, detail_fields }) => {
         <div className="flex w-full flex-col gap-6 place-self-center lg:max-w-[60%]">
           <span className="font-grandstander text-xl font-semibold text-[#002A48] md:text-2xl">{title}</span>
 
-          <div className="rounded-lg border border-[#519EFD] bg-white p-8 flex flex-col gap-1">
+          <div className="flex flex-col gap-1 rounded-lg border border-[#519EFD] bg-white p-8">
             {detail_fields.map((d, i) => {
-              return (
-                <div key={i}>
-                  <DetailCard {...d} />
-                </div>
-              );
+              return <DetailCard key={i} {...d} />;
             })}
           </div>
         </div>

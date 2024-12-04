@@ -5,7 +5,7 @@ interface DetailProps {
 
 type Field = {
   type: string,
-  key?: string,
+  label?: string,
   value?: string,
   hyperlink?: string
 }
