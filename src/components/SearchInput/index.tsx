@@ -28,7 +28,7 @@ export const SearchInput = () => {
     if (query) {
       router.push(`/search?keyword=${query}&page=1&limit=10`);
       router.refresh();
-      setIsSuggestionsVisible(false); // Close suggestions
+      setIsSuggestionsVisible(false);
     }
   };
 
@@ -52,7 +52,6 @@ export const SearchInput = () => {
     }
   };
 
-  // Close suggestions on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {

@@ -9,14 +9,13 @@ import { Pagination } from '../Pagination';
 export const Search: React.FC<SearchProps> = ({ results: initialResults, keyword: initialKeyword }) => {
   const [results, setResults] = useState(initialResults);
   const [keyword, setKeyword] = useState(initialKeyword);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [nextPage, setNextPage] = useState<number | null>(null);
-  const [previousPage, setPreviousPage] = useState<number | null>(null);
+  const [countItems, setCountItems] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const router = useRouter();
 
   const param = useSearchParams();
-  const queryKeyword = param.get("keyword")
-  const queryPage = param.get("page")
+  const queryKeyword = param.get('keyword');
+  const queryPage = param.get('page');
 
   const fetchResult = async () => {
     try {
@@ -25,8 +24,7 @@ export const Search: React.FC<SearchProps> = ({ results: initialResults, keyword
 
       setResults(res.data);
       setCurrentPage(currentPage);
-      setNextPage(res.next_page);
-      setPreviousPage(res.previous_page);
+      setCountItems(res.count_items);
     } catch (e: any) {}
   };
 
@@ -38,10 +36,10 @@ export const Search: React.FC<SearchProps> = ({ results: initialResults, keyword
   }, [queryKeyword]);
 
   useEffect(() => {
-    if(queryPage) {
-      setCurrentPage(Number(queryPage))
+    if (queryPage) {
+      setCurrentPage(Number(queryPage));
     }
-  }, [queryPage])
+  }, [queryPage]);
 
   useEffect(() => {
     fetchResult();
@@ -54,7 +52,7 @@ export const Search: React.FC<SearchProps> = ({ results: initialResults, keyword
           Search result for <b className="text-[#37AAE8]">{keyword}</b>
         </span>
 
-        <div className="grid grid-cols-1 gap-2">
+        <div className="grid grow grid-cols-1 gap-2">
           {results.length ? (
             results.map((res, index) => <SearchCard key={index} {...res} />)
           ) : (
@@ -62,17 +60,28 @@ export const Search: React.FC<SearchProps> = ({ results: initialResults, keyword
           )}
         </div>
 
-        {results.length > 0 && (
-          <Pagination
-            currentPage={currentPage}
-            nextPage={nextPage}
-            previousPage={previousPage}
-            onPageChange={(page) => {
-              router.push(`/search?keyword=${keyword}&page=${page}&limit=10`);
-              router.refresh();
-            }}
-          />
-        )}
+        <div className="mt-auto">
+          {results.length > 0 && (
+            // <Pagination
+            //   currentPage={currentPage}
+            //   nextPage={nextPage}
+            //   previousPage={previousPage}
+            //   onPageChange={(page) => {
+            //     router.push(`/search?keyword=${keyword}&page=${page}&limit=10`);
+            //     router.refresh();
+            //   }}
+            // />
+            <Pagination
+              currentPage={currentPage}
+              countItems={countItems}
+              limit={10}
+              onPageChange={(page) => {
+                router.push(`/search?keyword=${keyword}&page=${page}&limit=10`);
+                router.refresh();
+              }}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
