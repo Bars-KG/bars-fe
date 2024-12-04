@@ -6,11 +6,15 @@ import { useEffect, useState } from 'react';
 import { SearchCard } from './SearchCard';
 import { Pagination } from '../Pagination';
 
-export const Search: React.FC<SearchProps> = ({ results: initialResults, keyword: initialKeyword }) => {
+export const Search: React.FC<SearchProps> = ({
+  results: initialResults,
+  keyword: initialKeyword,
+  page: initialPage,
+}) => {
   const [results, setResults] = useState(initialResults);
   const [keyword, setKeyword] = useState(initialKeyword);
   const [countItems, setCountItems] = useState<number>(1);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const router = useRouter();
 
   const param = useSearchParams();
@@ -30,7 +34,7 @@ export const Search: React.FC<SearchProps> = ({ results: initialResults, keyword
 
   useEffect(() => {
     if (queryKeyword) {
-      setKeyword(queryKeyword.toLowerCase());
+      setKeyword(queryKeyword);
       setCurrentPage(1);
     }
   }, [queryKeyword]);

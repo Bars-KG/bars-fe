@@ -12,6 +12,7 @@ type SearchResult = {
 };
 
 interface SearchProps {
+  page: number;
   keyword: string;
   results: SearchResult[];
 }
