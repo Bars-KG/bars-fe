@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
-import { FaInstagram, FaFacebookSquare, FaYoutube, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaInstagram, FaFacebookSquare, FaYoutube, FaLinkedin, FaTwitter, FaHeart } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   return (
@@ -25,7 +25,9 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="text-center sm:text-right">
-        <span className="font-medium text-[#A1A3A5]">made with 🩵 by BARS</span>
+        <span className="flex gap-1 items-center font-medium text-[#A1A3A5]">
+          made with <FaHeart color="#4DA6E6" /> by BARS
+        </span>
       </div>
     </footer>
   );
