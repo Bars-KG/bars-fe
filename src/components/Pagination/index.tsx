@@ -39,25 +39,27 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, countItems,
   };
 
   return (
-    <div className="mt-4 flex items-center w-2/5 justify-center gap-4 place-self-center rounded-full">
+    <div className="mt-4 flex w-full items-center justify-center gap-1 place-self-center rounded-full sm:w-2/5 sm:gap-4">
       <button
         onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`rounded-full border p-4 w-14 h-14 flex items-center ${
-          currentPage === 1 ? 'cursor-not-allowed text-gray-400 bg-white/10' : 'text-blue-600 bg-white/40 hover:bg-blue-300/60'
+        className={`flex h-14 w-14 items-center rounded-full p-1 sm:p-4 ${
+          currentPage === 1
+            ? 'cursor-not-allowed text-gray-400 sm:bg-white/10'
+            : 'text-blue-600 sm:bg-white/60 sm:hover:bg-blue-300/60'
         }`}
       >
-        <IoIosArrowBack size={20}/>
+        <IoIosArrowBack size={20} className="h-5 w-5 sm:h-10 sm:w-10" />
       </button>
 
-      <div className='bg-white/40 p-3 rounded-full w-full flex justify-center items-center gap-2'>
+      <div className="flex w-full items-center justify-center gap-2 rounded-full bg-white/60 p-1 sm:p-3">
         {renderPageNumbers().map((page, index) =>
           typeof page === 'number' ? (
             <button
               key={index}
               onClick={() => onPageChange(page)}
-              className={`rounded-full p-3 h-14 w-14 ${
-                page === currentPage ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-blue-100'
+              className={`h-14 w-14 rounded-full p-3 text-xs sm:text-base ${
+                page === currentPage ? 'bg-[#519EFD] text-white' : 'text-gray-700 hover:bg-blue-100'
               }`}
             >
               {page}
@@ -73,11 +75,13 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, countItems,
       <button
         onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`rounded-full border p-4 w-14 h-14 flex items-center ${
-          currentPage === totalPages ? 'cursor-not-allowed text-gray-400 bg-white/10' : 'text-blue-600 bg-white/40 hover:bg-blue-300/60'
+        className={`flex h-14 w-14 items-center rounded-full p-1 sm:p-4 ${
+          currentPage === totalPages
+            ? 'cursor-not-allowed text-gray-400 sm:bg-white/10'
+            : 'text-blue-600 sm:bg-white/60 sm:hover:bg-blue-300/60'
         }`}
       >
-        <IoIosArrowForward size={20}/>
+        <IoIosArrowForward size={20} className="h-5 w-5 sm:h-10 sm:w-10" />
       </button>
     </div>
   );
