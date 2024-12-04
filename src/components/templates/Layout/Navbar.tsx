@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed z-50 flex w-full flex-col gap-4 sm:gap-0 justify-between bg-white px-6 py-5 shadow-bottom-only sm:h-[82px] sm:flex-row sm:items-center lg:px-20">
+    <nav className="fixed z-50 flex w-full flex-col justify-between gap-4 bg-white px-6 py-5 shadow-bottom-only sm:h-[82px] sm:flex-row sm:items-center sm:gap-0 lg:px-20">
       <div className="flex items-center gap-3">
         <div className="flex justify-start lg:hidden">
           <button onClick={toggleHamburger} className={open ? styles.whnth : styles.wh}>
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
           <Link
             key={href}
             href={href}
-            className={`font-semibold ${pathname === href ? 'text-[#4DA6E6] underline' : 'text-black'}`}
+            className={`${pathname === href ? 'font-semibold text-[#4DA6E6]' : 'font-medium text-slate-500'} hover:scale-105`}
           >
             {name}
           </Link>
