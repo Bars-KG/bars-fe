@@ -1,7 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['commons.wikimedia.org', 'via.placeholder.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        pathname: '/wikipedia/commons/**', // Sesuaikan dengan pola gambar yang diinginkan
+      },
+      {
+        protocol: 'http',
+        hostname: 'commons.wikimedia.org',
+        pathname: '/wiki/Special:FilePath/**', // Sesuaikan dengan pola gambar yang diinginkan
+      }
+    ],
   },
 };
 
