@@ -30,7 +30,7 @@ export const SearchInput = () => {
     if (query) {
       router.push(`/search?keyword=${query}&page=1&limit=10`);
       router.refresh();
-      setIsSuggestionsVisible(false);
+      clearInput();
     }
   };
 
@@ -108,16 +108,16 @@ export const SearchInput = () => {
           {suggestions.map((s, i) => (
             <button
               key={i}
-              className={`flex cursor-pointer flex-col rounded-lg px-4 py-2 align-middle text-black hover:bg-gray-100 ${
+              className={`flex w-full cursor-pointer flex-col rounded-lg px-4 py-2 align-middle text-black hover:bg-gray-100 ${
                 i < suggestions.length - 1 ? 'border-b border-gray-200' : ''
               }`}
               onClick={() => {
                 router.push(`/airport/${s.entity.split('/').pop()}`);
-                setIsSuggestionsVisible(false);
+                clearInput();
               }}
             >
-              <span className="font-bold">{s.title}</span>
-              <span className="max-w-full overflow-hidden text-ellipsis text-sm text-gray-600">
+              <span className="font-bold text-left">{s.title}</span>
+              <span className="max-w-full overflow-hidden text-ellipsis text-left text-sm text-gray-600">
                 {s.description ?? ''}
               </span>
             </button>
