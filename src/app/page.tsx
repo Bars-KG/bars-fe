@@ -46,7 +46,7 @@ export default function Home() {
           </div>
 
           <Link
-            href={''}
+            href={'/airport'}
             className="sm:text-md mt-8 text-center text-sm font-medium text-[#002A48] underline hover:text-[#33629a]"
           >
             ... and More!
