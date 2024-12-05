@@ -11,7 +11,7 @@ export const AirportContinents: React.FC<AirportContinentsProps> = ({ continents
       <h1 className="pt-24 text-center font-grandstander text-3xl font-bold text-[#002A48]">Airport List</h1>
       <p className="mb-7 text-center text-[#002A48]">By Continent</p>
       <ul className="grid grid-cols-1 gap-4 sm:px-24">
-        {continents.map((c, i) => (
+        {continents.map((c) => (
           <ContinentDropdown key={c.code} continent={c} />
         ))}
       </ul>
@@ -50,7 +50,7 @@ const ContinentDropdown: React.FC<ContinentProps> = ({ continent }) => {
         </div>
       </button>
       {isOpen && (
-        <div className="mt-2 w-full rounded-lg bg-[#E7F4FE] p-4">
+        <div className="mt-2 w-full rounded-lg p-4">
           <ul className="space-y-2">
             {countries.map((country) => (
               <li key={country.code}>
@@ -62,6 +62,14 @@ const ContinentDropdown: React.FC<ContinentProps> = ({ continent }) => {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href={`/airport/continent/${continent.code}`}
+                className="block font-semibold text-[#37AAE8] hover:underline"
+              >
+                More Countries
+              </Link>
+            </li>
           </ul>
         </div>
       )}
