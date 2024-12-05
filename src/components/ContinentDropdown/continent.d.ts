@@ -1,10 +1,11 @@
 interface AirportContinentsProps {
-  continents: Continent[]
+  continents: Continent[];
 }
 interface ContinentProps {
   continent: Continent;
 }
 
 type Continent = {
-  code: string; name: string
-}
+  code: string;
+  name: string;
+};

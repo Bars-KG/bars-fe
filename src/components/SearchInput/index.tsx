@@ -116,7 +116,7 @@ export const SearchInput = () => {
                 clearInput();
               }}
             >
-              <span className="font-bold text-left">{s.title}</span>
+              <span className="text-left font-bold">{s.title}</span>
               <span className="max-w-full overflow-hidden text-ellipsis text-left text-sm text-gray-600">
                 {s.description ?? ''}
               </span>
