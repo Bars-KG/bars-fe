@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
 
   const links = [
     { href: '/', name: 'Home', icon: FaHome },
-    { href: '/airport/list', name: 'Airport List', icon: MdLocalAirport },
+    { href: '/airport', name: 'Airport List', icon: MdLocalAirport },
   ];
 
   const toggleHamburger = () => {
