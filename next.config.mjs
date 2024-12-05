@@ -11,8 +11,14 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'commons.wikimedia.org',
         pathname: '/wiki/Special:FilePath/**',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'commons.wikimedia.org',
+        pathname: '/wiki/Special:FilePath/**',
+      },
     ],
+    unoptimized: true
   },
 };
 
