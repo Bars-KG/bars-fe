@@ -5,36 +5,28 @@ import Link from 'next/link';
 import api from '@/libs/axios/api';
 import { FaChevronDown } from 'react-icons/fa';
 
-export default async function AirportContinents() {
-  const res = await api.get('/airports/continents/');
-  const { continents } = res.data;
-
-  const fetchCountries = async (continentCode: string) => {
-    const res = await api.get(`/airports/continents/${continentCode}`);
-    return res.data.data;
-  };
-
+export const AirportContinents: React.FC<AirportContinentsProps> = ({ continents }) => {
   return (
     <div className="w-full items-center justify-center bg-gradient-to-t from-[#D3EBFE] to-white p-8">
       <h1 className="pt-24 text-center font-grandstander text-3xl font-bold text-[#002A48]">Airport List</h1>
       <p className="mb-7 text-center text-[#002A48]">By Continent</p>
       <ul className="grid grid-cols-1 gap-4 sm:px-24">
-        {continents.map((continent: { code: string; name: string }) => (
-          <ContinentDropdown key={continent.code} continent={continent} fetchCountries={fetchCountries} />
+        {continents.map((c, i) => (
+          <ContinentDropdown key={c.code} continent={c} />
         ))}
       </ul>
     </div>
   );
-}
+};
 
-interface ContinentProps {
-  continent: { code: string; name: string };
-  fetchCountries: (continentCode: string) => Promise<{ code: string; name: string }[]>;
-}
-
-const ContinentDropdown: React.FC<ContinentProps> = ({ continent, fetchCountries }) => {
+const ContinentDropdown: React.FC<ContinentProps> = ({ continent }) => {
   const [countries, setCountries] = useState<{ code: string; name: string }[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  const fetchCountries = async (continentCode: string) => {
+    const res = await api.get(`/airports/continents/${continentCode}`);
+    return res.data.data;
+  };
 
   const toggleDropdown = async () => {
     if (!isOpen) {
