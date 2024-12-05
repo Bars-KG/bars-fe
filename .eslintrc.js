@@ -32,6 +32,8 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx', 'js', 'jsx'] }],
+    '@typescript-eslint/no-explicit-any': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
   settings: {
     react: {

@@ -106,7 +106,7 @@ export const SearchInput = () => {
       {isSuggestionsVisible && suggestions.length > 0 && (
         <div className="absolute left-0 top-12 z-10 w-full rounded-lg border border-[#4DA6E6] bg-white shadow-xl">
           {suggestions.map((s, i) => (
-            <div
+            <button
               key={i}
               className={`flex cursor-pointer flex-col rounded-lg px-4 py-2 align-middle text-black hover:bg-gray-100 ${
                 i < suggestions.length - 1 ? 'border-b border-gray-200' : ''
@@ -120,7 +120,7 @@ export const SearchInput = () => {
               <span className="max-w-full overflow-hidden text-ellipsis text-sm text-gray-600">
                 {s.description ?? ''}
               </span>
-            </div>
+            </button>
           ))}
         </div>
       )}
