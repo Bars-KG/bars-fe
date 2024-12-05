@@ -5,12 +5,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'upload.wikimedia.org',
-        pathname: '/wikipedia/commons/**', // Sesuaikan dengan pola gambar yang diinginkan
+        pathname: '/wikipedia/commons/**',
       },
       {
         protocol: 'http',
         hostname: 'commons.wikimedia.org',
-        pathname: '/wiki/Special:FilePath/**', // Sesuaikan dengan pola gambar yang diinginkan
+        pathname: '/wiki/Special:FilePath/**',
       }
     ],
   },
