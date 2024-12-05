@@ -17,7 +17,7 @@ export default async function AirportContinents() {
   return (
     <div className="w-full items-center justify-center bg-gradient-to-t from-[#D3EBFE] to-white p-8">
       <h1 className="pt-24 text-center font-grandstander text-3xl font-bold text-[#002A48]">Airport List</h1>
-      <p className="mb-7 text-center">By Continent</p>
+      <p className="mb-7 text-center text-[#002A48]">By Continent</p>
       <ul className="grid grid-cols-1 gap-4 sm:px-24">
         {continents.map((continent: { code: string; name: string }) => (
           <ContinentDropdown key={continent.code} continent={continent} fetchCountries={fetchCountries} />
