@@ -2,6 +2,7 @@ import FeatureCard from '@/components/FeatureCard';
 import { SearchInput } from '@/components/SearchInput';
 import { features } from '@/libs/features';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
             Discover insider secrets, real-time updates, and everything you need to know about airports worldwide—all in
             one place!
           </p>
-          <div className="mt-6 w-full items-center justify-items-center px-4 sm:mt-8 sm:max-w-screen-md place-self-center">
+          <div className="mt-6 w-full items-center justify-items-center place-self-center px-4 sm:mt-8 sm:max-w-screen-md">
             <SearchInput />
           </div>
         </div>
@@ -38,12 +39,18 @@ export default function Home() {
           <h2 className="pt-24 text-center font-grandstander text-2xl font-semibold text-[#002A48] drop-shadow-xl sm:pt-48 sm:text-3xl">
             What Can You Find Here?
           </h2>
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-3 px-10 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
-              <FeatureCard key={index} icon={feature.icon} text={feature.text} />
+              <FeatureCard key={index} icon={feature.icon} text={feature.text} url={feature.url} />
             ))}
           </div>
-          <p className="sm:text-md mt-8 text-center text-sm font-medium text-[#002A48]">... and More!</p>
+
+          <Link
+            href={''}
+            className="sm:text-md mt-8 text-center text-sm font-medium text-[#002A48] underline hover:text-[#33629a]"
+          >
+            ... and More!
+          </Link>
         </div>
       </div>
     </div>

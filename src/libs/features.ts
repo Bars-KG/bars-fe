@@ -1,26 +1,32 @@
 export const features = [
   {
     icon: 'images/location-icon.svg',
-    text: "Airport's Location",
+    text: 'Hartsfield Jackson Atlanta International Airport',
+    url: '/airport/KATL',
   },
   {
     icon: 'images/location-icon.svg',
-    text: "Airport's Location",
+    text: 'Beijing Capital International Airport',
+    url: '/airport/ZBAA',
   },
   {
     icon: 'images/location-icon.svg',
-    text: "Airport's Location",
+    text: 'Dubai International Airport',
+    url: '/airport/OMDB',
   },
   {
     icon: 'images/location-icon.svg',
-    text: "Airport's Location",
+    text: 'Tokyo Haneda International Airport',
+    url: '/airport/RJTT',
   },
   {
     icon: 'images/location-icon.svg',
-    text: "Airport's Location",
+    text: 'London Heathrow Airport',
+    url: '/airport/EGLL',
   },
   {
     icon: 'images/location-icon.svg',
-    text: "Airport's Location",
+    text: "Chicago O'Hare International Airport",
+    url: '/airport/KORD',
   },
 ];
